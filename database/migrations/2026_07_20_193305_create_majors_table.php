@@ -11,12 +11,12 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('majors', function (Blueprint $table) {
-            $table->id(); // Membuat kolom 'id' (Primary Key, Auto Increment)
-            $table->string('nama_jurusan'); // Contoh: Teknik Komputer dan Jaringan
-            $table->string('slug')->unique(); // Untuk URL ramah SEO: /jurusan/teknik-komputer
-            $table->text('deskripsi')->nullable(); // Penjelasan singkat jurusan
-            $table->string('icon')->nullable(); // Nama class icon (misal dari FontAwesome)
-            $table->timestamps(); // Otomatis membuat kolom 'created_at' & 'updated_at'
+            $table->id();
+            $table->string('nama_jurusan');
+            $table->string('kode'); // <--- Kolom ini yang tadi bikin error!
+            $table->text('deskripsi')->nullable();
+            $table->string('icon')->nullable();
+            $table->timestamps();
         });
     }
 

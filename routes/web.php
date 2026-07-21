@@ -1,20 +1,18 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PpdbController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Profile;
+use App\Models\Major;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes (Peta Rute Website Bina Ikhwani)
-|--------------------------------------------------------------------------
-*/
+Route::get('/', function () {
+    $smp = Profile::where('jenjang', 'SMP')->first();
+    $smk = Profile::where('jenjang', 'SMK')->first();
+    $majors = Major::all();
 
-// 1. Rute Halaman Depan (Profil Sekolah) -> Memanggil method index() di HomeController
-Route::get('/', [HomeController::class, 'index'])->name('home');
+    return view('home', compact('smp', 'smk', 'majors'));
+})->name('home');
 
-// 2. Rute Formulir PPDB Online -> Memanggil method create() di PpdbController
-Route::get('/ppdb/daftar', [PpdbController::class, 'create'])->name('ppdb.register');
-
-// 3. Rute Proses Kirim Formulir PPDB -> Memanggil method store() di PpdbController (Wajib POST!)
-Route::post('/ppdb/daftar', [PpdbController::class, 'store'])->name('ppdb.store');
+// Route PPDB Dummy sementara
+Route::get('/ppdb/daftar', function () {
+    return "Halaman Pendaftaran PPDB Online (Segera Hadir)";
+})->name('ppdb.register');

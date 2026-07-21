@@ -12,10 +12,16 @@ return new class extends Migration {
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('judul'); // Contoh: Sejarah Singkat, Visi & Misi, Fasilitas Kampus
-            $table->text('konten'); // Isi dari profil tersebut
-            $table->enum('kategori', ['SMP', 'SMK', 'UMUM'])->default('UMUM'); // Membedakan profil SMP/SMK
-            $table->string('foto')->nullable(); // Foto gedung/kegiatan pendukung
+            $table->string('jenjang'); // <--- Kolom ini yang tadi kurang!
+            $table->string('nama_sekolah');
+            $table->string('npsn');
+            $table->text('alamat');
+            $table->string('kode_pos');
+            $table->string('telepon');
+            $table->string('email');
+            $table->string('kepala_sekolah');
+            $table->text('visi')->nullable();
+            $table->text('misi')->nullable();
             $table->timestamps();
         });
     }
