@@ -14,6 +14,7 @@ class PpdbRegistration extends Model
         'nisn',
         'nik',
         'nama_lengkap',
+        'email',
         'jenjang_pilihan',
         'major_id',
         'document_kk',
