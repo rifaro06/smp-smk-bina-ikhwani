@@ -124,9 +124,21 @@
                                 <span class="badge {{ $badgeColor }} rounded-pill px-3 py-1 fw-medium">{{ $reg->status }}</span>
                             </td>
                             <td class="text-center">
-                                <a href="{{ route('admin.show', $reg->id) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-semibold">
-                                    <i class="fas fa-eye me-1"></i> Periksa Berkas
-                                </a>
+                                <div class="d-flex justify-content-center align-items-center gap-2">
+                                    <a href="{{ route('admin.show', $reg->id) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-semibold">
+                                        <i class="fas fa-eye me-1"></i> Periksa Berkas
+                                    </a>
+                                    
+                                    <!-- Tombol Hapus Peserta -->
+                                    <form action="{{ route('admin.destroy', $reg->id) }}" method="POST" 
+                                          onsubmit="return confirm('Apakah Anda yakin ingin menghapus data atas nama {{ $reg->nama_lengkap }}? Semua berkas lampiran juga akan terhapus permanen.');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle d-flex align-items-center justify-content-center" title="Hapus Peserta" style="width: 32px; height: 32px; padding: 0;">
+                                            <i class="fas fa-trash-alt" style="font-size: 13px;"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @empty

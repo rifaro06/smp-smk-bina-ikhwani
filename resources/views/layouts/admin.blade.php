@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Admin PPDB - Bina Ikhwani</title>
+    <title>Panel Admin - Bina Ikhwani</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap 5 & FontAwesome -->
@@ -30,7 +30,8 @@
     <!-- NAVBAR KHUSUS ADMIN -->
     <nav class="navbar navbar-expand-lg navbar-dark admin-navbar py-3 shadow-sm">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('admin.dashboard') }}">
+            <!-- LOGO: Otomatis deteksi dasbor aktif -->
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ request()->is('admin/humas*') ? route('admin.humas.dashboard') : route('admin.dashboard') }}">
                 <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
                     <i class="fas fa-shield-alt small"></i>
                 </div>
@@ -47,7 +48,9 @@
             <div class="collapse navbar-collapse" id="adminNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('admin.dashboard') ? 'active text-success fw-semibold' : '' }}" href="{{ route('admin.dashboard') }}">
+                        <!-- LINK DASHBOARD: Otomatis deteksi dasbor aktif & status active -->
+                        <a class="nav-link {{ request()->is('admin/dashboard') || request()->is('admin/humas/dashboard') ? 'active text-success fw-semibold' : '' }}" 
+                           href="{{ request()->is('admin/humas*') ? route('admin.humas.dashboard') : route('admin.dashboard') }}">
                             <i class="fas fa-desktop me-1"></i> Dashboard
                         </a>
                     </li>
@@ -76,7 +79,7 @@
     <!-- FOOTER ADMIN -->
     <footer class="bg-white border-top py-3 mt-auto text-center text-muted small">
         <div class="container">
-            &copy; {{ date('Y') }} Portal PPDB SMP & SMK Bina Ikhwani Bogor — Sistem Manajemen Panitia
+            &copy; {{ date('Y') }} Portal PPDB & Humas SMP & SMK Bina Ikhwani Bogor — Sistem Manajemen Admin
         </div>
     </footer>
 

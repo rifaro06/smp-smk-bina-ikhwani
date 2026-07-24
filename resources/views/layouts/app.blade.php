@@ -192,10 +192,10 @@
             <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#visimisi">Visi & Misi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#jenjang">Jenjang Pendidikan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#berita">Berita & Agenda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+                    <a class="nav-link" href="{{ url('/') }}#visimisi">Visi & Misi</a>
+                    <a class="nav-link" href="{{ url('/') }}#jenjang">Jenjang Pendidikan</a>
+                    <a class="nav-link" href="{{ url('/') }}#berita">Berita & Agenda</a>
+                    <a class="nav-link" href="{{ url('/') }}#galeri">Galeri</a>
                     <li class="nav-item mt-2 mt-lg-0 ms-lg-3">
                         <a class="btn btn-ppdb fw-bold px-4 py-2 rounded-pill shadow-sm d-inline-flex align-items-center gap-2"
                             href="{{ route('ppdb.register') }}">
@@ -237,13 +237,13 @@
                         Menyelenggarakan jenjang SMP dan SMK yang beriman, berilmu, dan beradab.
                     </p>
                     <div class="d-flex gap-2">
-                        <a href="#"
+                        <a href="https://www.facebook.com/smp.smk.binaikhwanibogor"
                             class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center btn-social"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/official.binaikhwani?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                             class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center btn-social"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#"
+                        <a href="https://www.youtube.com/@b.onehouse"
                             class="btn btn-outline-light btn-sm rounded-circle d-flex align-items-center justify-content-center btn-social"
                             aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="https://wa.me/6281234567890" target="_blank"

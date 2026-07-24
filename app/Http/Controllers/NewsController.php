@@ -25,24 +25,28 @@ class NewsController extends Controller
     // 3. Menyimpan berita baru ke database & upload gambar
     public function store(Request $request)
     {
+        // 1. Validasi input sesuai dengan name di form HTML
         $request->validate([
-            'judul'  => 'required|max:255',
+            'judul' => 'required|string|max:255',
             'konten' => 'required',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'katagori' => 'required|in:Berita,Agenda',
+            'kategori' => 'required', // Pastikan pakai 'kategori' (huruf E)
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048' // Pakai 'gambar' sesuai form
         ]);
 
-        $imagePath = null;
+        $data = [
+            'judul' => $request->judul,
+            'konten' => $request->konten,
+            'kategori' => $request->kategori,
+            'slug' => \Illuminate\Support\Str::slug($request->judul),
+        ];
+
+        // 2. Proses upload gambar jika user memasukkan foto
         if ($request->hasFile('gambar')) {
-            $imagePath = $request->file('gambar')->store('news-images', 'public');
+            $data['gambar'] = $request->file('gambar')->store('news', 'public');
         }
 
-        News::create([
-            'judul'  => $request->judul,
-            'slug'   => Str::slug($request->judul) . '-' . time(),
-            'konten' => $request->konten,
-            'gambar' => $imagePath,
-        ]);
+        // 3. Simpan ke database
+        \App\Models\News::create($data);
 
         return redirect()->route('admin.news.index')->with('success', 'Berita berhasil dipublikasikan!');
     }
